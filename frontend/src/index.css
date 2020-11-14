@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+}
+
+html {
+  font-size: calc(5px + 1vmin);
+  --header-bg-col: white;
+}
+
+html[data-theme=dark]{
+  --header-bg-col: black;
+}
+
