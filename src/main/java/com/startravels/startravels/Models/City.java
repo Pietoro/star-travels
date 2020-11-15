@@ -16,7 +16,7 @@ public class City {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Planet.class)
+    @ManyToOne(targetEntity = Planet.class)
     private Planet planet;
 
     @Column(nullable = false)

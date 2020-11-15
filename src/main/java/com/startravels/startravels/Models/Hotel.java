@@ -16,13 +16,13 @@ public class Hotel {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = City.class)
+    @ManyToOne(targetEntity = City.class)
     private City city;
 
     @Column
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Standard.class)
+    @ManyToOne(targetEntity = Standard.class)
     private Standard standard;
 
     @Entity

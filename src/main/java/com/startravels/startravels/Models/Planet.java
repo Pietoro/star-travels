@@ -16,6 +16,6 @@ public class Planet {
     @Column(unique = true, nullable = false)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = State.class)
+    @ManyToOne(targetEntity = State.class)
     private State state;
 }

@@ -16,6 +16,6 @@ public class SpaceDock {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = City.class)
+    @ManyToOne(targetEntity = City.class)
     private City city;
 }

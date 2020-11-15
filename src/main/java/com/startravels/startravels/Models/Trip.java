@@ -14,13 +14,13 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = SpaceDock.class)
+    @ManyToOne(targetEntity = SpaceDock.class)
     private SpaceDock dockFrom;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = SpaceDock.class)
+    @ManyToOne(targetEntity = SpaceDock.class)
     private SpaceDock dockTo;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Hotel.class)
+    @ManyToOne(targetEntity = Hotel.class)
     private Hotel hotel;
 
     @Column(nullable = false)
@@ -38,7 +38,7 @@ public class Trip {
     @Column(nullable = false)
     private int availablePlaces;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = BoardType.class)
+    @ManyToOne(targetEntity = BoardType.class)
     private BoardType boardType;
 
     @Entity
