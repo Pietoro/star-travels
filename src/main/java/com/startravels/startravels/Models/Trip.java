@@ -23,20 +23,20 @@ public class Trip {
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = Hotel.class)
     private Hotel hotel;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate departureDate;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate returnDate;
 
-    @Column
-    private Integer price;
+    @Column(nullable = false)
+    private int price;
 
-    @Column
+    @Column(nullable = false)
     private boolean promoted;
 
-    @Column
-    private Integer availablePlaces;
+    @Column(nullable = false)
+    private int availablePlaces;
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = BoardType.class)
     private BoardType boardType;

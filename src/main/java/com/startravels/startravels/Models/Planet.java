@@ -13,7 +13,7 @@ public class Planet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = State.class)

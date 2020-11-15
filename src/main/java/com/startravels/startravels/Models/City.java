@@ -13,12 +13,12 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = Planet.class)
     private Planet planet;
 
-    @Column
+    @Column(nullable = false)
     private boolean isOrbital;
 }

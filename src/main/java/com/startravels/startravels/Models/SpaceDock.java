@@ -13,7 +13,7 @@ public class SpaceDock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = City.class)

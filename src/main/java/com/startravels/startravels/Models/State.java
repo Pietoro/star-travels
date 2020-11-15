@@ -13,7 +13,7 @@ public class State {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private String name;
 
 }
