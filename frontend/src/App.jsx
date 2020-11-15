@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import logoLight from './logo_light.svg'
 import logoDark from './logo_dark.svg'
+import { TripList } from './components/TripList'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -66,7 +67,7 @@ function App() {
         </div>
       </StyledHeader>
       <StyledMain>
-        
+        <TripList/>
       </StyledMain>
       <StyledFooter>
         Long live Klingon Empire
