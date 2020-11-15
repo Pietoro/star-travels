@@ -51,6 +51,14 @@ values ('The Blood Inn', @first_city, 4),
        ('Hotel Quark', @ds9, 3),
        ('The Prophet''s Inn', @bhala, 3);
 
+set @the_blood_inn := (select distinct id from hotels where name='The Blood Inn');
+set @lhotel_extraordinaire := (select distinct id from hotels where name='L''Hotel Extraordinaire');
+set @logical_choice := (select distinct id from hotels where name='A Logical Choice');
+set @jamaharon_hotel := (select distinct id from hotels where name='Jamaharon Hotel');
+set @sunrisa := (select distinct id from hotels where name='SunRisa');
+set @hotel_quark := (select distinct id from hotels where name='Hotel Quark');
+set @the_prophets_inn := (select distinct id from hotels where name='The Prophet''s Inn');
+
 delete from space_docks;
 insert into space_docks (name, city_id)
 values ('Kahless Dock', @first_city),
@@ -59,3 +67,21 @@ values ('Kahless Dock', @first_city),
        ('Risa Oribital Dock', @risa_orbital_station),
        ('Docking Ring C', @ds9),
        ('Emissary Dock', @bhala);
+
+set @kahless_dock := (select distinct id from space_docks where name='Kahless Dock');
+set @picard_dock := (select distinct id from space_docks where name='Picard Dock');
+set @spock_dock := (select distinct id from space_docks where name='Spock Dock');
+set @risa_orbital_dock := (select distinct id from space_docks where name='Risa Oribital Dock');
+set @docking_ring_c := (select distinct id from space_docks where name='Docking Ring C');
+set @emissary_dock := (select distinct id from space_docks where name='Emissary Dock');
+
+set @bb := 'BB';
+set @hb := 'HB';
+set @fb := 'FB';
+set @ai := 'AI';
+
+delete from trips;
+insert into trips (dock_from_id, dock_to_id, hotel_id, board_type_code, available_places, departure_date, return_date, price, promoted)
+values (@spock_dock, @kahless_dock, @the_blood_inn, @bb, 15, '2020-11-23','2020-12-01', 1500, true),
+       (@picard_dock, @emissary_dock, @the_prophets_inn, @fb, 10, '2020-12-03','2020-12-11', 2000, true),
+       (@docking_ring_c, @risa_orbital_dock, @jamaharon_hotel, @ai, 50, '2020-11-26','2020-12-11', 6000, true);
