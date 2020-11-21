@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import logoDark from './logo_dark.svg'
 import { TripListContainer } from './components/TripList'
+import { Trips } from './components/Trips'
 import { RWD_L, RWD_L_SIZE, RWD_XL, RWD_XL_SIZE } from './utils/rwd'
 
 const StyledContainer = styled.div`
@@ -80,6 +81,9 @@ function App() {
         <StyledMain>
           <StyledContent>
             <Switch>
+              <Route path="/trips">
+                <Trips/>
+              </Route>
               <Route path="/login"></Route>
               <Route path="/">
                 <TripListContainer promoted={true}/>
