@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
 import logoLight from './logo_light.svg'
 import logoDark from './logo_dark.svg'
-import { TripList } from './components/TripList'
+import { TripListContainer } from './components/TripList'
 import { RWD_L, RWD_L_SIZE, RWD_XL, RWD_XL_SIZE } from './utils/rwd'
 
 const StyledContainer = styled.div`
@@ -44,7 +50,7 @@ const StyledFooter = styled.footer`
   text-align: center;
 `
 
-const InlineBlock = styled.div`
+const StyledLogInLink = styled.div`
   display: inline-block;
   margin: 0.5rem;
 `
@@ -68,27 +74,38 @@ function App() {
     [isLightMode])
 
   return (
-    <StyledContainer>
-      <StyledHeader>
-        <div>
-          {isLightMode ? <img src={logoLight} alt="StarTravels"/> : <img src={logoDark} alt="StarTravels"/>}
-        </div>
-        <div>
-          <InlineBlock>
-            <button onClick={() => setIsLightMode(!isLightMode)}>Light/Dark Mode</button>
-          </InlineBlock>
-          <InlineBlock>Log In</InlineBlock>
-        </div>
-      </StyledHeader>
-      <StyledMain>
-        <StyledContent>
-          <TripList/>
-        </StyledContent>
-      </StyledMain>
-      <StyledFooter>
-        Long live Klingon Empire
-      </StyledFooter>
-    </StyledContainer>
+    <Router>
+      <StyledContainer>
+        <StyledHeader>
+          <Link to="/">
+            <div>
+              {isLightMode ? <img src={logoLight} alt="StarTravels"/> : <img src={logoDark} alt="StarTravels"/>}
+            </div>
+          </Link>
+          <div>
+              <button onClick={() => setIsLightMode(!isLightMode)}>Light/Dark Mode</button>
+              <Link to="/login">
+                <StyledLogInLink>
+                  Log In
+                </StyledLogInLink>
+              </Link>
+          </div>
+        </StyledHeader>
+        <StyledMain>
+          <StyledContent>
+            <Switch>
+              <Route path="/login"></Route>
+              <Route path="/">
+                <TripListContainer promoted={true}/>
+              </Route>
+            </Switch>
+          </StyledContent>
+        </StyledMain>
+        <StyledFooter>
+          Long live Klingon Empire
+        </StyledFooter>
+      </StyledContainer>
+    </Router>
   )
 }
 
