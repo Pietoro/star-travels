@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import logoLight from './logo_light.svg'
 import logoDark from './logo_dark.svg'
 import { TripList } from './components/TripList'
+import { RWD_L, RWD_L_SIZE, RWD_XL, RWD_XL_SIZE } from './utils/rwd'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ const StyledHeader = styled.header`
 
 const StyledMain = styled.main`
   flex-grow: 1;
+  text-align: center;
 `
 
 const StyledFooter = styled.footer`
@@ -45,6 +47,18 @@ const StyledFooter = styled.footer`
 const InlineBlock = styled.div`
   display: inline-block;
   margin: 0.5rem;
+`
+
+const StyledContent = styled.div`
+  width: 100%;
+  ${RWD_L} {
+    width: ${RWD_L_SIZE}px;
+  }
+  
+  ${RWD_XL} {
+    width: ${RWD_XL_SIZE}px;
+  }
+  display: inline-block;
 `
 
 function App() {
@@ -67,7 +81,9 @@ function App() {
         </div>
       </StyledHeader>
       <StyledMain>
-        <TripList/>
+        <StyledContent>
+          <TripList/>
+        </StyledContent>
       </StyledMain>
       <StyledFooter>
         Long live Klingon Empire
