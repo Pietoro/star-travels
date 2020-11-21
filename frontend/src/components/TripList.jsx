@@ -2,18 +2,6 @@ import React, { useEffect, useState }  from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
-export const TripList = () => {
-
-  const [tripData, setTripData] = useState([])
-  const downloadData = async() => {
-    try {
-      const response = await axios.get('/api/trips')
-      setTripData(response.data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   const StyledContainer = styled.div`
     margin: 1.5rem 0;
     border: 1px solid black;
@@ -67,7 +55,20 @@ export const TripList = () => {
     padding: 0.5rem;
   `
 
+  const API = '/api/trips'
+  const API_PROMOTED = '/api/trips/promoted'
 
+export const TripList = ({promoted}) => {
+
+  const [tripData, setTripData] = useState([])
+  const downloadData = async() => {
+    try {
+      const response = await axios.get(promoted ? API_PROMOTED : API)
+      setTripData(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   useEffect(() => downloadData(), [])
 
