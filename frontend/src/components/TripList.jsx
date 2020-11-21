@@ -2,68 +2,74 @@ import React, { useEffect, useState }  from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
-  const StyledContainer = styled.div`
-    margin: 1.5rem 0;
-    border: 1px solid black;
-    display: inline-block;
-    width: 95%;
-  `
+const StyledContainer = styled.div`
+  margin: 1.5rem 0;
+  border: 1px solid black;
+  display: inline-block;
+  width: 95%;
+`
 
-  const StyledUl = styled.ul`
-    list-style: none;
-  `
+const StyledUl = styled.ul`
+  list-style: none;
+`
 
-  const StyledTripContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    border: 1px solid blue;
-    margin: 1rem;
-  `
+const StyledTripContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  border: 1px solid blue;
+  margin: 1rem;
+`
 
-  const StyledLeftContainer = styled.div`
+const StyledLeftContainer = styled.div`
 
-  `
+`
 
-  const StyledImg = styled.div`
-    background-color: black;
-    width: 15rem;
-    height: 15rem;
-  `
+const StyledImg = styled.div`
+  background-color: black;
+  width: 15rem;
+  height: 15rem;
+`
 
-  const StyledMiddleContainer = styled.div`
-    padding: 0.5rem;
-    text-align: left;
-    border-right: 1px solid lightgray;
-    flex-grow: 1;
-  `
+const StyledMiddleContainer = styled.div`
+  padding: 0.5rem;
+  text-align: left;
+  border-right: 1px solid lightgray;
+  flex-grow: 1;
+`
 
-  const StyledRightContainer = styled.div`
-    padding-top: 0.5rem;
-    width: 20rem;
-    font-size: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  `
+const StyledRightContainer = styled.div`
+  padding-top: 0.5rem;
+  width: 20rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
 
-  const StyledPriceDiv = styled.div`
-      
-  `
+const StyledPriceDiv = styled.div`
+    
+`
 
-  const StyledSeeMoreLink = styled.div`
-    background-color: lightgreen;
-    padding: 0.5rem;
-  `
+const StyledSeeMoreLink = styled.div`
+  background-color: lightgreen;
+  padding: 0.5rem;
+`
 
-  const API = '/api/trips'
-  const API_PROMOTED = '/api/trips/promoted'
+const API = '/api/trips'
+const API_PROMOTED = '/api/trips/promoted'
 
-export const TripList = ({promoted}) => {
-
+export const TripListContainer = ({promoted, cityName, planetName, departureDate, returnDate}) => {
   const [tripData, setTripData] = useState([])
   const downloadData = async() => {
     try {
-      const response = await axios.get(promoted ? API_PROMOTED : API)
+      const response = await axios.get(promoted ? API_PROMOTED : API, {
+        params: {
+          cityName,
+          planetName,
+          departureDate,
+          returnDate
+        }
+      })
       setTripData(response.data)
     } catch (error) {
       console.error(error)
@@ -72,6 +78,10 @@ export const TripList = ({promoted}) => {
 
   useEffect(() => downloadData(), [])
 
+  return <TripList tripData={tripData}/>
+}
+
+export const TripList = ({tripData}) => {
   return (
     <StyledContainer>
       <StyledUl>
