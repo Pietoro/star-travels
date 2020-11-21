@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   BrowserRouter as Router,
@@ -6,7 +6,6 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import logoLight from './logo_light.svg'
 import logoDark from './logo_dark.svg'
 import { TripListContainer } from './components/TripList'
 import { RWD_L, RWD_L_SIZE, RWD_XL, RWD_XL_SIZE } from './utils/rwd'
@@ -18,7 +17,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledHeader = styled.header`
-  background-color: var(--header-bg-col);
+  background-color: black;
   display: flex;
   justify-content: space-between;
   height: 6rem;
@@ -29,13 +28,6 @@ const StyledHeader = styled.header`
     height: 5rem;
     margin-left: 1rem;
   }
-
-  button {
-    background-color: hsl(270, 100%, 45%);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-  }
 `
 
 const StyledMain = styled.main`
@@ -44,7 +36,7 @@ const StyledMain = styled.main`
 `
 
 const StyledFooter = styled.footer`
-  background-color: var(--header-bg-col);
+  background-color: black;
   border-top: 2px solid black;
   height: 3rem;
   text-align: center;
@@ -68,27 +60,21 @@ const StyledContent = styled.div`
 `
 
 function App() {
-  const [isLightMode, setIsLightMode] = useState(true)
-  useEffect(() => document.querySelector('html')
-    .setAttribute('data-theme', isLightMode ? 'light' : 'dark'), 
-    [isLightMode])
-
   return (
     <Router>
       <StyledContainer>
         <StyledHeader>
           <Link to="/">
             <div>
-              {isLightMode ? <img src={logoLight} alt="StarTravels"/> : <img src={logoDark} alt="StarTravels"/>}
+              <img src={logoDark} alt="StarTravels"/>
             </div>
           </Link>
           <div>
-              <button onClick={() => setIsLightMode(!isLightMode)}>Light/Dark Mode</button>
-              <Link to="/login">
-                <StyledLogInLink>
-                  Log In
-                </StyledLogInLink>
-              </Link>
+            <Link to="/login">
+              <StyledLogInLink>
+                Log In
+              </StyledLogInLink>
+            </Link>
           </div>
         </StyledHeader>
         <StyledMain>

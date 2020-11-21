@@ -23,10 +23,5 @@ code {
 
 html {
   font-size: calc(5px + 1vmin);
-  --header-bg-col: white;
-}
-
-html[data-theme=dark]{
-  --header-bg-col: black;
 }
 
