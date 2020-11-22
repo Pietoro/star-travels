@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 const StyledContainer = styled.div`
   margin: 1.5rem 0;
-  border: 1px solid black;
   display: inline-block;
   width: 95%;
 `
@@ -16,7 +15,7 @@ const StyledUl = styled.ul`
 const StyledTripContainer = styled.div`
   display: flex;
   flex-direction: row;
-  border: 1px solid blue;
+  border: 1px solid lightgray;
   margin: 1rem;
 `
 
@@ -51,7 +50,8 @@ const StyledPriceDiv = styled.div`
 `
 
 const StyledSeeMoreLink = styled.div`
-  background-color: lightgreen;
+  background-color: var(--primary-col);
+  color: white;
   padding: 0.5rem;
 `
 

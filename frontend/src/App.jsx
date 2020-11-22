@@ -9,6 +9,7 @@ import {
 import logoDark from './logo_dark.svg'
 import { TripListContainer } from './components/TripList'
 import { Trips } from './components/Trips'
+import { SearchForm } from './components/SearchForm'
 import { RWD_L, RWD_L_SIZE, RWD_XL, RWD_XL_SIZE } from './utils/rwd'
 
 const StyledContainer = styled.div`
@@ -46,6 +47,7 @@ const StyledFooter = styled.footer`
 const StyledLogInLink = styled.div`
   display: inline-block;
   margin: 0.5rem;
+  color: white;
 `
 
 const StyledContent = styled.div`
@@ -58,6 +60,12 @@ const StyledContent = styled.div`
     width: ${RWD_XL_SIZE}px;
   }
   display: inline-block;
+`
+
+const StyledHomeContentTop = styled.div` 
+  width: 95%;
+  display: inline-block;
+  margin-top: 1.5rem;
 `
 
 function App() {
@@ -86,6 +94,9 @@ function App() {
               </Route>
               <Route path="/login"></Route>
               <Route path="/">
+                <StyledHomeContentTop>
+                  <SearchForm/>
+                </StyledHomeContentTop>
                 <TripListContainer promoted={true}/>
               </Route>
             </Switch>
