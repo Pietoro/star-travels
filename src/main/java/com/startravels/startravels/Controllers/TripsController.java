@@ -3,7 +3,6 @@ package com.startravels.startravels.Controllers;
 import com.startravels.startravels.Models.Trip;
 import com.startravels.startravels.Models.TripDAO;
 import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
