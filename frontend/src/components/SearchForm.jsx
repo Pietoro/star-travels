@@ -6,6 +6,7 @@ const StyledForm = styled.form`
   width: 45%;
   border: 1px solid lightgray;
   padding: 1.5rem;
+  display: inline-block;
 `
 
 const StyledFormField = styled.label`

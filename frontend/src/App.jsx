@@ -6,11 +6,12 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import logoDark from './logo_dark.svg'
+import logoDark from './images/logo_dark.svg'
 import { TripListContainer } from './components/TripList'
 import { Trips } from './components/Trips'
 import { SearchForm } from './components/SearchForm'
 import { RWD_L, RWD_L_SIZE, RWD_XL, RWD_XL_SIZE } from './utils/rwd'
+import quarkAd from './images/quark_ad.png'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -64,8 +65,14 @@ const StyledContent = styled.div`
 
 const StyledHomeContentTop = styled.div` 
   width: 95%;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items:center;
   margin-top: 1.5rem;
+`
+
+const StyledImg = styled.img`
+  width: 50%;
 `
 
 function App() {
@@ -96,6 +103,7 @@ function App() {
               <Route path="/">
                 <StyledHomeContentTop>
                   <SearchForm/>
+                  <StyledImg src={quarkAd}/>
                 </StyledHomeContentTop>
                 <TripListContainer promoted={true}/>
               </Route>
