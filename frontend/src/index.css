@@ -18,13 +18,17 @@ code {
   padding: 0;
   border: none;
   background-color: transparent;
-  font-size: 2rem;
+  font-size: inherit;
 }
 
 html {
   font-size: calc(5px + 1vmin);
   --primary-col: hsl(265, 100%,50%);
   --accent-col:hsl(48, 100%, 70%);
+}
+
+body {
+  font-size: 2rem;
 }
 
 a {

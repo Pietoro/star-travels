@@ -12,6 +12,7 @@ import { Trips } from './components/Trips'
 import { SearchForm } from './components/SearchForm'
 import { RWD_L, RWD_L_SIZE, RWD_XL, RWD_XL_SIZE } from './utils/rwd'
 import quarkAd from './images/quark_ad.png'
+import { TripDetails } from './components/TripDetails';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -96,6 +97,9 @@ function App() {
         <StyledMain>
           <StyledContent>
             <Switch>
+              <Route path="/trips/:id">
+                <TripDetails/>
+              </Route>
               <Route path="/trips">
                 <Trips/>
               </Route>
