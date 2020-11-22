@@ -39,6 +39,7 @@ const StyledDateInput = styled.input.attrs({ type: "date" })`
 
   &:focus {
     outline-color: var(--accent-col);
+  }
 `
 
 const StyledSearchButton = styled.div`
