@@ -3,14 +3,15 @@ package com.startravels.startravels.Controllers;
 import com.startravels.startravels.Models.Trip;
 import com.startravels.startravels.Models.TripDAO;
 import lombok.AllArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -33,5 +34,23 @@ public class TripsController {
     ) {
         return tripDAO.findBySearchParameters(
                 cityName, planetName, departureDate, returnDate);
+    }
+
+    @GetMapping("/{id}")
+    public Trip getTrip(@PathVariable String id) {
+        int idInteger;
+        try {
+            idInteger = Integer.parseInt(id);
+        } catch(Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Invalid parameter");
+        }
+        return tripDAO
+                .findById(idInteger)
+                .orElseThrow(
+                        () -> new ResponseStatusException(
+                                HttpStatus.NOT_FOUND,
+                                "Trip not found"));
     }
 }
