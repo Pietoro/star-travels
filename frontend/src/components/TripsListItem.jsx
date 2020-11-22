@@ -47,6 +47,12 @@ const StyledSeeMoreLink = styled.div`
 
 
 export const TripsListItem = ({trip}) => {
+
+
+  const price = trip.price
+  const city = trip.hotel.city
+  const dockFromCity = trip.dockFrom.city;
+
   return (
     <li key={`trip_${trip.id}`}>
       <StyledTripContainer>
@@ -54,12 +60,12 @@ export const TripsListItem = ({trip}) => {
           <StyledImg></StyledImg>
         </StyledLeftContainer>
         <StyledMiddleContainer>
-          {trip.hotel.city.planet.name}, {trip.hotel.city.name}
+          {city.planet.name}, {city.name}
           <div>
             {trip.hotel.name}
           </div>
           <div>
-            <b>From: </b>{trip.dockFrom.city.planet.name}, {trip.dockFrom.city.name}
+            <b>From: </b>{dockFromCity.planet.name}, {dockFromCity.name}
           </div>
           <div>
             {trip.boardType.code}
@@ -71,7 +77,7 @@ export const TripsListItem = ({trip}) => {
         <StyledRightContainer>
           {trip.departureDate} - {trip.returnDate}
           <StyledPriceDiv>
-            {trip.price}
+            {price}
           </StyledPriceDiv>
           <Link to={`/trips/${trip.id}`}>
             <StyledSeeMoreLink>See more</StyledSeeMoreLink>
