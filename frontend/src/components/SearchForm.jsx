@@ -4,33 +4,47 @@ import styled from 'styled-components';
 
 const StyledForm = styled.form`
   width: 45%;
-  border: 1px solid lightgray;
   padding: 1.5rem;
   display: inline-block;
+  background-color: hsl(0,00%, 90%);
 `
 
 const StyledFormField = styled.label`
   display: block;
   text-align: left;
+  margin: 1rem 0;
 `
 
 const StyledLabel = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  color: black;
 `
 
 const StyledTextInput = styled.input.attrs({ type: "text" })`
   border: 1px solid lightgray;
+  background-color: white;
+  padding: 0.5rem;
+  width: 100%;
 
+  &:focus {
+    outline-color: var(--accent-col);
+  }
 `
 
 const StyledDateInput = styled.input.attrs({ type: "date" })`
   border: 1px solid lightgray;
+  background-color: white;
+  padding: 0.5rem;
+  width: 100%;
 
+  &:focus {
+    outline-color: var(--accent-col);
 `
 
 const StyledSearchButton = styled.div`
   padding: 0.5rem; 
-  background-color: var(--primary-col);
+  margin-top: 2rem;
+  background-color:var(--primary-col);
   color: white;
   text-decoration: none;
   font-weight: bold;
