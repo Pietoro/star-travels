@@ -46,7 +46,7 @@ const StyledSeeMoreLink = styled.div`
 `
 
 
-export const TripsListItem = ({trip}) => {
+export const TripListItem = ({trip}) => {
 
 
   const price = trip.price

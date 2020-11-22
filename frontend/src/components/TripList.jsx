@@ -1,7 +1,7 @@
 import React, { useEffect, useState }  from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { TripsListItem } from './TripsListItem';
+import { TripListItem } from './TripListItem';
 
 const StyledContainer = styled.div`
   margin: 1.5rem 0;
@@ -44,7 +44,7 @@ export const TripList = ({tripData}) => {
     <StyledContainer>
       <StyledUl>
         {tripData.map((trip) =>
-          <TripsListItem trip={trip}/>
+          <TripListItem trip={trip}/>
         )
         }
       </StyledUl>
