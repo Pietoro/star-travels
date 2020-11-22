@@ -18,23 +18,26 @@ const API_PROMOTED = '/api/trips/promoted'
 
 export const TripListContainer = ({promoted, cityName, planetName, departureDate, returnDate}) => {
   const [tripData, setTripData] = useState([])
-  const downloadData = async() => {
-    try {
-      const response = await axios.get(promoted ? API_PROMOTED : API, {
-        params: {
-          cityName,
-          planetName,
-          departureDate,
-          returnDate
-        }
-      })
-      setTripData(response.data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  
 
-  useEffect(() => downloadData(), [])
+  useEffect(() => {
+    const downloadData = async() => {
+      try {
+        const response = await axios.get(promoted ? API_PROMOTED : API, {
+          params: {
+            cityName,
+            planetName,
+            departureDate,
+            returnDate
+          }
+        })
+        setTripData(response.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    downloadData()
+  }, [cityName, planetName, departureDate, returnDate, promoted])
 
   return <TripList tripData={tripData}/>
 }
